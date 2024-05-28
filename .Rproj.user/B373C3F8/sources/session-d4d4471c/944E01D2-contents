@@ -1,0 +1,13 @@
+library(datasets)
+par(mfrow=c(2,3))
+with(airquality,{
+  plot(Month,Temp,main='Monthly Temperatures Scatter Plot')
+  plot(Day,Temp,main='Daily Temperatures Scatter Plot')
+  hist(airquality$Temp,main='Temperatures Distribution Histogram')
+  boxplot(Solar.R~Month,airquality,xlab='Month',ylab='Solar Ray',main='Monthly Solar Ray Box Plot')
+  plot(Day,Solar.R,main='Daily Solar Ray Regression Line Plot',pch=20)
+  abline(lm(Solar.R~Day,airquality),lwd=2)
+  barplot(table(airquality$Solar.R),main='Solar Ray Distribution Bar Chart',horiz=T,xlab='Frequency of Solar Ray')
+  mtext("Temperature & Solar Ray in New York City",outer=T)
+})
+dev.off()
